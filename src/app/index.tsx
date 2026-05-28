@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import * as Device from 'expo-device';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { supabase } from '@/lib/supabase';
 
 import { AnimatedIcon } from '@/components/animated-icon';
 import { HintRow } from '@/components/hint-row';
@@ -29,9 +31,19 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const [data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data: result } = await supabase.from("users").select("*");
+      setData(result || []);
+    })();
+  }, []);
+
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
+        <ThemedText type="code">{JSON.stringify(data)}</ThemedText>
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
