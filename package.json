@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "skillssphere",
   "main": "expo-router/entry",
   "version": "1.0.0",
@@ -42,4 +43,9 @@
     "lint": "expo lint"
   },
   "private": true
+=======
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.2"
+  }
+>>>>>>> 5621d61483d07d193a3a86ca08364541c344cdc2
 }
