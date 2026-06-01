@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import AddSkillForm from './AddSkillForm'
 
 export default async function AdminSkillsPage() {
   const { data: skills, error } = await supabase
@@ -15,6 +16,8 @@ export default async function AdminSkillsPage() {
         <h1>Skills</h1>
         <p>Alle beschikbare vaardigheden</p>
       </div>
+
+      <AddSkillForm />
 
       <div className="admin-section">
         {error && <div className="admin-alert admin-alert-error">{error.message}</div>}

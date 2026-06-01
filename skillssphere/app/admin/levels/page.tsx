@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import AddLevelForm from './AddLevelForm'
 
 export default async function AdminLevelsPage() {
   const { data: levels, error } = await supabase
@@ -15,6 +16,8 @@ export default async function AdminLevelsPage() {
         <h1>Niveaus</h1>
         <p>Alle vaardigheidsniveaus</p>
       </div>
+
+      <AddLevelForm />
 
       <div className="admin-section">
         {error && <div className="admin-alert admin-alert-error">{error.message}</div>}

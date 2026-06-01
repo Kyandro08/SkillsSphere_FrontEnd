@@ -1,10 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
 
+:root {
+  --accent: #b44dff;
+  --accent-rgb: 180, 77, 255;
+  --bg-main: #0a0a0a;
+  --bg-sidebar: #111;
+  --bg-card: #1a1a1a;
+  --bg-select-option: #1a1a2e;
+  --text: #fff;
+  --text-muted: rgba(255, 255, 255, 0.4);
+  --text-nav: rgba(255, 255, 255, 0.6);
+  --text-table: rgba(255, 255, 255, 0.8);
+  --text-empty: rgba(255, 255, 255, 0.3);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-accent: rgba(180, 77, 255, 0.15);
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --input-bg-focus: rgba(255, 255, 255, 0.08);
+  --hover-row: rgba(255, 255, 255, 0.03);
+  --green: #76b900;
+  --green-rgb: 118, 185, 0;
+  --green-text: #a5d6a7;
+  --green-text-badge: #81c784;
+  --red: #f44336;
+  --red-rgb: 244, 67, 54;
+  --red-text: #ef9a9a;
+}
+
 admin-wrap {
   display: flex;
   min-height: 100vh;
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--bg-main);
+  color: var(--text);
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -14,8 +41,8 @@ admin-wrap {
   top: 0; left: 0;
   width: 240px;
   height: 100vh;
-  background: #111;
-  border-right: 1px solid rgba(255, 214, 0, 0.15);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-accent);
   padding: 32px 16px;
   display: flex;
   flex-direction: column;
@@ -27,11 +54,11 @@ admin-wrap {
 .admin-logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.6rem;
-  color: #FFD600;
+  color: var(--accent);
   letter-spacing: 2px;
   margin-bottom: 32px;
   padding: 0 8px 20px;
-  border-bottom: 1px solid rgba(255, 214, 0, 0.15);
+  border-bottom: 1px solid var(--border-accent);
 }
 
 .admin-logo span {
@@ -40,7 +67,7 @@ admin-wrap {
   font-size: 0.7rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   margin-top: 3px;
 }
 
@@ -48,7 +75,7 @@ admin-wrap {
   font-size: 0.65rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   padding: 16px 12px 6px;
 }
 
@@ -65,7 +92,7 @@ admin-wrap {
   padding: 10px 12px;
   border-radius: 8px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-nav);
   font-size: 0.88rem;
   font-weight: 400;
   transition: all 0.2s ease;
@@ -73,9 +100,9 @@ admin-wrap {
 }
 
 .admin-nav-item:hover {
-  background: rgba(255, 214, 0, 0.08);
-  color: #FFD600;
-  border-color: rgba(255, 214, 0, 0.15);
+  background: rgba(var(--accent-rgb), 0.08);
+  color: var(--accent);
+  border-color: var(--border-accent);
 }
 
 .admin-nav-icon {
@@ -88,7 +115,7 @@ admin-wrap {
 .admin-sidebar-footer {
   margin-top: auto;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 214, 0, 0.15);
+  border-top: 1px solid var(--border-accent);
 }
 
 .admin-sidebar-footer a {
@@ -98,13 +125,13 @@ admin-wrap {
   padding: 10px 12px;
   border-radius: 8px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   font-size: 0.85rem;
   transition: color 0.2s ease;
 }
 
 .admin-sidebar-footer a:hover {
-  color: #FFD600;
+  color: var(--accent);
 }
 
 /* ── Main content ────────────────────────────────────────── */
@@ -120,7 +147,7 @@ admin-wrap {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 0.82rem;
   margin-bottom: 28px;
@@ -128,7 +155,7 @@ admin-wrap {
 }
 
 .admin-back:hover {
-  color: #FFD600;
+  color: var(--accent);
 }
 
 /* ── Page header ─────────────────────────────────────────── */
@@ -141,19 +168,19 @@ admin-wrap {
   font-size: 2.8rem;
   letter-spacing: 2px;
   line-height: 1;
-  color: #fff;
+  color: var(--text);
 }
 
 .admin-page-header p {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   margin-top: 8px;
   font-size: 0.9rem;
 }
 
 /* ── Section card ────────────────────────────────────────── */
 .admin-section {
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 28px 26px;
   margin-bottom: 20px;
@@ -163,10 +190,10 @@ admin-wrap {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.2rem;
   letter-spacing: 1.5px;
-  color: #FFD600;
+  color: var(--accent);
   margin-bottom: 22px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ── Stats grid ──────────────────────────────────────────── */
@@ -178,8 +205,8 @@ admin-wrap {
 }
 
 .admin-stat-card {
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 214, 0, 0.15);
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
   border-radius: 12px;
   padding: 20px;
 }
@@ -187,13 +214,13 @@ admin-wrap {
 .admin-stat-value {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.2rem;
-  color: #FFD600;
+  color: var(--accent);
   line-height: 1;
 }
 
 .admin-stat-label {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -207,8 +234,8 @@ admin-wrap {
 }
 
 .admin-card {
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 214, 0, 0.15);
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
   border-radius: 14px;
   padding: 24px;
   text-decoration: none;
@@ -218,7 +245,7 @@ admin-wrap {
 }
 
 .admin-card:hover {
-  border-color: #FFD600;
+  border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
@@ -236,7 +263,7 @@ admin-wrap {
 
 .admin-card-desc {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -246,7 +273,7 @@ admin-wrap {
   gap: 6px;
   margin-top: 16px;
   font-size: 0.8rem;
-  color: #FFD600;
+  color: var(--accent);
   font-weight: 500;
 }
 
@@ -267,19 +294,19 @@ admin-wrap {
   font-size: 0.72rem;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
   font-weight: 600;
 }
 
 .admin-table td {
   padding: 12px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-table);
 }
 
 .admin-table tr:hover td {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--hover-row);
 }
 
 .admin-table-actions {
@@ -304,28 +331,28 @@ admin-wrap {
 }
 
 .admin-btn-edit {
-  background: rgba(255, 214, 0, 0.1);
-  color: #FFD600;
-  border-color: rgba(255, 214, 0, 0.2);
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.2);
 }
 
 .admin-btn-edit:hover {
-  background: rgba(255, 214, 0, 0.2);
+  background: rgba(var(--accent-rgb), 0.2);
 }
 
 .admin-btn-delete {
-  background: rgba(244, 67, 54, 0.1);
-  color: #ef9a9a;
-  border-color: rgba(244, 67, 54, 0.2);
+  background: rgba(var(--red-rgb), 0.1);
+  color: var(--red-text);
+  border-color: rgba(var(--red-rgb), 0.2);
 }
 
 .admin-btn-delete:hover {
-  background: rgba(244, 67, 54, 0.2);
+  background: rgba(var(--red-rgb), 0.2);
 }
 
 .admin-btn-primary {
-  background: #FFD600;
-  color: #0a0a0a;
+  background: var(--accent);
+  color: var(--text);
   padding: 12px 24px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.1rem;
@@ -339,7 +366,7 @@ admin-wrap {
 .admin-btn-primary:hover {
   opacity: 0.92;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 214, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.25);
 }
 
 /* ── Form fields ─────────────────────────────────────────── */
@@ -353,7 +380,7 @@ admin-wrap {
   font-weight: 600;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   margin-bottom: 7px;
 }
 
@@ -361,11 +388,11 @@ admin-wrap {
 .admin-field select,
 .admin-field textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--input-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 11px 14px;
-  color: #fff;
+  color: var(--text);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.93rem;
   transition: border-color 0.2s;
@@ -375,13 +402,18 @@ admin-wrap {
 .admin-field select:focus,
 .admin-field textarea:focus {
   outline: none;
-  border-color: #FFD600;
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+  background: var(--input-bg-focus);
 }
 
 .admin-field textarea {
   resize: vertical;
   min-height: 90px;
+}
+
+.admin-field select option {
+  background: var(--bg-select-option);
+  color: var(--text);
 }
 
 .admin-row {
@@ -403,15 +435,15 @@ admin-wrap {
 }
 
 .admin-alert-success {
-  background: rgba(76, 175, 80, 0.1);
-  border: 1px solid rgba(76, 175, 80, 0.25);
-  color: #a5d6a7;
+  background: rgba(var(--green-rgb), 0.1);
+  border: 1px solid rgba(var(--green-rgb), 0.25);
+  color: var(--green-text);
 }
 
 .admin-alert-error {
-  background: rgba(244, 67, 54, 0.1);
-  border: 1px solid rgba(244, 67, 54, 0.25);
-  color: #ef9a9a;
+  background: rgba(var(--red-rgb), 0.1);
+  border: 1px solid rgba(var(--red-rgb), 0.25);
+  color: var(--red-text);
 }
 
 /* ── Search toolbar ──────────────────────────────────────── */
@@ -424,24 +456,24 @@ admin-wrap {
 
 .admin-toolbar input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--input-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 10px 14px;
-  color: #fff;
+  color: var(--text);
   font-size: 0.9rem;
 }
 
 .admin-toolbar input:focus {
   outline: none;
-  border-color: #FFD600;
+  border-color: var(--accent);
 }
 
 /* ── Empty state ─────────────────────────────────────────── */
 .admin-empty {
   padding: 40px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-empty);
   font-size: 0.9rem;
 }
 
@@ -455,12 +487,11 @@ admin-wrap {
 }
 
 .admin-badge-active {
-  background: rgba(76, 175, 80, 0.15);
-  color: #81c784;
+  background: rgba(var(--green-rgb), 0.15);
+  color: var(--green-text-badge);
 }
 
 .admin-badge-inactive {
-  background: rgba(244, 67, 54, 0.1);
-  color: #ef9a9a;
+  background: rgba(var(--red-rgb), 0.1);
+  color: var(--red-text);
 }
-

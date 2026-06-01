@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import AddUserForm from './AddUserForm'
 
 export default async function AdminUsersPage() {
   const { data: users, error } = await supabase
@@ -15,6 +16,8 @@ export default async function AdminUsersPage() {
         <h1>Gebruikers</h1>
         <p>Alle geregistreerde gebruikers</p>
       </div>
+
+      <AddUserForm />
 
       <div className="admin-section">
         {error && <div className="admin-alert admin-alert-error">{error.message}</div>}
