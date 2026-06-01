@@ -1,22 +1,28 @@
-export default function DashboardPage() {
-  return (
-    <div className="mx-auto max-w-4xl px-6 py-8">
-      <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
-      <p className="mt-1 text-zinc-500">Welkom bij SkillSphere! Dit is jouw activiteitenfeed.</p>
+import { supabase } from '@/lib/supabase'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
 
-      <div className="mt-8 space-y-4">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="rounded-lg border border-zinc-200 bg-white p-4">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-zinc-200" />
-              <div>
-                <p className="text-sm font-medium text-zinc-900">Activiteit #{i}</p>
-                <p className="text-xs text-zinc-500">2 uur geleden</p>
-              </div>
-            </div>
-            <p className="mt-2 text-sm text-zinc-600">Nieuwe skill toegevoegd of verbinding gelegd.</p>
-          </div>
-        ))}
+export default async function HomePage() {
+  try {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (session) redirect('/dashboard')
+  } catch {
+    // Supabase Auth nog niet ingesteld — toon landingspagina
+  }
+
+  return (
+    <div className="flex min-h-[80vh] flex-col items-center justify-center px-6 text-center">
+      <h1 className="text-4xl font-bold text-zinc-900">SkillSphere Network</h1>
+      <p className="mt-4 max-w-md text-zinc-500">
+        Registreer, valideer en vergelijk jouw vaardigheden met medestudenten.
+      </p>
+      <div className="mt-8 flex gap-4">
+        <Link href="/login" className="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-700">
+          Inloggen
+        </Link>
+        <Link href="/register" className="rounded-lg border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50">
+          Registreren
+        </Link>
       </div>
     </div>
   )

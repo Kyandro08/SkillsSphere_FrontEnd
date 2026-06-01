@@ -1,24 +1,21 @@
 import Link from 'next/link'
+import styles from './Navbar.module.css'
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between border-b border-zinc-200 bg-white px-6 py-3">
-      <div className="flex items-center gap-8">
-        <Link href="/" className="text-xl font-bold text-indigo-600">
-          SkillSphere
-        </Link>
-        <div className="flex items-center gap-6 text-sm font-medium text-zinc-600">
-          <Link href="/" className="hover:text-indigo-600 transition-colors">Dashboard</Link>
-          <Link href="/network" className="hover:text-indigo-600 transition-colors">Netwerk</Link>
-          <Link href="/leaderboard" className="hover:text-indigo-600 transition-colors">Leaderboard</Link>
-          <Link href="/notifications" className="hover:text-indigo-600 transition-colors">Notificaties</Link>
+    <nav className={styles.nav}>
+      <div className={styles.left}>
+        <Link href="/" className={styles.logo}>SkillSphere</Link>
+        <div className={styles.links}>
+          <Link href="/dashboard" className={styles.link}>Dashboard</Link>
+          <Link href="/network" className={styles.link}>Netwerk</Link>
+          <Link href="/leaderboard" className={styles.link}>Leaderboard</Link>
+          <Link href="/notifications" className={styles.link}>Notificaties</Link>
         </div>
       </div>
-      <div className="flex items-center gap-4">
-        <Link href="/profile" className="flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-indigo-600 transition-colors">
-          <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold text-sm">
-            J
-          </div>
+      <div className={styles.right}>
+        <Link href="/profile" className={styles.profileLink}>
+          <div className={styles.avatar}>J</div>
           Profiel
         </Link>
       </div>
