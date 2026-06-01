@@ -1,7 +1,28 @@
+import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
 import styles from './Navbar.module.css'
 
-export default function Navbar() {
+export default async function Navbar() {
+  let initial = 'J'
+  let username = 'Profiel'
+
+  try {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (session?.user) {
+      const { data: user } = await supabase
+        .from('tb_users')
+        .select('username')
+        .eq('user_id', session.user.id)
+        .single()
+      if (user) {
+        username = user.username
+        initial = user.username[0].toUpperCase()
+      }
+    }
+  } catch {
+    // auth not configured
+  }
+
   return (
     <nav className={styles.nav}>
       <div className={styles.left}>
@@ -15,8 +36,8 @@ export default function Navbar() {
       </div>
       <div className={styles.right}>
         <Link href="/profile" className={styles.profileLink}>
-          <div className={styles.avatar}>J</div>
-          Profiel
+          <div className={styles.avatar}>{initial}</div>
+          {username}
         </Link>
       </div>
     </nav>

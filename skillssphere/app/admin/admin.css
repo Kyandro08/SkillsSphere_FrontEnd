@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+admin-wrap {
+  display: flex;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.admin-sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #111;
+  border-right: 1px solid rgba(255, 214, 0, 0.15);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.admin-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: #FFD600;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+  padding: 0 8px 20px;
+  border-bottom: 1px solid rgba(255, 214, 0, 0.15);
+}
+
+.admin-logo span {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 3px;
+}
+
+.admin-nav-label {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 16px 12px 6px;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.admin-nav-item:hover {
+  background: rgba(255, 214, 0, 0.08);
+  color: #FFD600;
+  border-color: rgba(255, 214, 0, 0.15);
+}
+
+.admin-nav-icon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 214, 0, 0.15);
+}
+
+.admin-sidebar-footer a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.admin-sidebar-footer a:hover {
+  color: #FFD600;
+}
+
+/* ── Main content ────────────────────────────────────────── */
+.admin-main {
+  margin-left: 240px;
+  padding: 48px 52px;
+  max-width: 960px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.admin-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  font-size: 0.82rem;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+.admin-back:hover {
+  color: #FFD600;
+}
+
+/* ── Page header ─────────────────────────────────────────── */
+.admin-page-header {
+  margin-bottom: 40px;
+}
+
+.admin-page-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  line-height: 1;
+  color: #fff;
+}
+
+.admin-page-header p {
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* ── Section card ────────────────────────────────────────── */
+.admin-section {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 28px 26px;
+  margin-bottom: 20px;
+}
+
+.admin-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  color: #FFD600;
+  margin-bottom: 22px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Stats grid ──────────────────────────────────────────── */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-stat-card {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 214, 0, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.admin-stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: #FFD600;
+  line-height: 1;
+}
+
+.admin-stat-label {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Cards grid ──────────────────────────────────────────── */
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.admin-card {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 214, 0, 0.15);
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.admin-card:hover {
+  border-color: #FFD600;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.admin-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.admin-card-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.admin-card-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+.admin-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: #FFD600;
+  font-weight: 500;
+}
+
+/* ── Table ───────────────────────────────────────────────── */
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-weight: 600;
+}
+
+.admin-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.admin-table tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-btn-edit {
+  background: rgba(255, 214, 0, 0.1);
+  color: #FFD600;
+  border-color: rgba(255, 214, 0, 0.2);
+}
+
+.admin-btn-edit:hover {
+  background: rgba(255, 214, 0, 0.2);
+}
+
+.admin-btn-delete {
+  background: rgba(244, 67, 54, 0.1);
+  color: #ef9a9a;
+  border-color: rgba(244, 67, 54, 0.2);
+}
+
+.admin-btn-delete:hover {
+  background: rgba(244, 67, 54, 0.2);
+}
+
+.admin-btn-primary {
+  background: #FFD600;
+  color: #0a0a0a;
+  padding: 12px 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.admin-btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 214, 0, 0.25);
+}
+
+/* ── Form fields ─────────────────────────────────────────── */
+.admin-field {
+  margin-bottom: 16px;
+}
+
+.admin-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 7px;
+}
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 11px 14px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.93rem;
+  transition: border-color 0.2s;
+}
+
+.admin-field input:focus,
+.admin-field select:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: #FFD600;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.admin-row {
+  display: flex;
+  gap: 14px;
+}
+
+.admin-row .admin-field {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* ── Alerts ──────────────────────────────────────────────── */
+.admin-alert {
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 0.88rem;
+}
+
+.admin-alert-success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.25);
+  color: #a5d6a7;
+}
+
+.admin-alert-error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.25);
+  color: #ef9a9a;
+}
+
+/* ── Search toolbar ──────────────────────────────────────── */
+.admin-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-toolbar input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.admin-toolbar input:focus {
+  outline: none;
+  border-color: #FFD600;
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+.admin-empty {
+  padding: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+}
+
+/* ── Status badge ────────────────────────────────────────── */
+.admin-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.admin-badge-active {
+  background: rgba(76, 175, 80, 0.15);
+  color: #81c784;
+}
+
+.admin-badge-inactive {
+  background: rgba(244, 67, 54, 0.1);
+  color: #ef9a9a;
+}
+
