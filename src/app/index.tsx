@@ -47,10 +47,9 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            Hello World!
+            Welkom!!
           </ThemedText>
         </ThemedView>
-
         <ThemedText type="code" style={styles.code}>
           get started
         </ThemedText>

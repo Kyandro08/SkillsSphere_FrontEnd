@@ -3,6 +3,10 @@
     "name": "SkillsSphere",
     "slug": "SkillsSphere",
     "version": "1.0.0",
+    "extra": {
+      "supabaseUrl": "https://maqcpjxhhsnwazpfxlqd.supabase.co",
+      "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hcWNwanhoaHNud2F6cGZ4bHFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3ODMyNDAsImV4cCI6MjA5NTM1OTI0MH0.O4NPkAL6mcvbdMV8e22DpYCHM_ZQ1NEJUDpw7y6c2K4"
+    },
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "skillssphere",
