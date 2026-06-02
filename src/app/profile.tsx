@@ -1,28 +1,38 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { ThemedView } from '@/components/themed-view';
+import { ThemedText } from '@/components/themed-text';
 import { supabase } from '@/lib/supabase';
 
+
+
 export default function ProfileScreen() {
-  const [users, setUsers] = useState<any[]>([]);
+  const [skills, setSkills] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase.from("tb_users").select("*");
-      if (data) setUsers(data);
+      const { data, error } = await supabase
+        .from("tb_user_skills")
+        .select("level_id, tb_skills(skill_name), tb_levels(level_name)")
+        .eq("user_id", "7");
+      if (error) { console.log("SUPABASE ERROR:", error); setSkills([{ error: error.message }]); }
+      else if (data) { console.log("DATA:", data); setSkills(data); }
     })();
   }, []);
 
   return (
-    <View style={styles.container}>
-      {users.map((user, i) => (
-        <View key={i} style={styles.card}>
-          <Text style={styles.label}>Username: {user.username}</Text>
-          <Text style={styles.label}>Email: {user.email}</Text>
-        </View>
+    <ThemedView style={styles.container}>
+      {skills.map((s, i) => (
+        <ThemedView type="backgroundElement" key={i} style={styles.card}>
+          <ThemedText>{s.error || s.tb_skills?.skill_name}</ThemedText>
+          {!s.error && <ThemedText>Level: {s.tb_levels?.level_name}</ThemedText>}
+        </ThemedView>
       ))}
-    </View>
+    </ThemedView>
   );
 }
+
+//const { data: skillsList } = await supabase.from("tb_skills").select("*");
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16 },
@@ -30,7 +40,5 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     marginBottom: 8,
-    backgroundColor: '#f0f0f3',
   },
-  label: { fontSize: 14, marginBottom: 2 },
 });
