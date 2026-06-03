@@ -2,6 +2,8 @@ import Link from 'next/link'
 import './admin.css'
 import { DashboardIcon, UsersIcon, SkillsIcon, LevelsIcon, QuestionsIcon } from './icons'
 
+export const dynamic = 'force-dynamic'
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="admin-wrap">
