@@ -47,3 +47,10 @@ example
 .claude/
 AGENTS.md
 CLAUDE.md
+
+# Old Expo project (moved to Next.js skillssphere/)
+/app.json
+/tsconfig.json
+/src/
+/assets/
+/scripts/
