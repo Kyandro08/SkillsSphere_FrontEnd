@@ -1,0 +1,5 @@
+skillssphere/node_modules/
+skillssphere/.next/
+skillssphere/*.tsbuildinfo
+skillssphere/.env.local
+skillssphere/.env*.local
