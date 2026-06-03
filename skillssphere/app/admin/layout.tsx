@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import './admin.css'
+import { DashboardIcon, UsersIcon, SkillsIcon, LevelsIcon, QuestionsIcon } from './icons'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,14 +13,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         <div className="admin-nav-label">Beheer</div>
         <nav className="admin-nav">
-          <AdminLink href="/admin" icon="🏠">Dashboard</AdminLink>
-          <AdminLink href="/admin/users" icon="👥">Gebruikers</AdminLink>
-          <AdminLink href="/admin/skills" icon="🎯">Skills</AdminLink>
-          <AdminLink href="/admin/levels" icon="📊">Levels</AdminLink>
+          <AdminLink href="/admin" icon={<DashboardIcon />}>Dashboard</AdminLink>
+          <AdminLink href="/admin/users" icon={<UsersIcon />}>Gebruikers</AdminLink>
+          <AdminLink href="/admin/skills" icon={<SkillsIcon />}>Skills</AdminLink>
+          <AdminLink href="/admin/levels" icon={<LevelsIcon />}>Levels</AdminLink>
+          <AdminLink href="/admin/questions" icon={<QuestionsIcon />}>Vragen</AdminLink>
         </nav>
 
         <div className="admin-sidebar-footer">
-          <Link href="/dashboard">← Terug naar app</Link>
+          <Link href="/">Terug naar app</Link>
         </div>
       </aside>
 
@@ -28,7 +30,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   )
 }
 
-function AdminLink({ href, icon, children }: { href: string; icon: string; children: React.ReactNode }) {
+function AdminLink({ href, icon, children }: { href: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
     <Link href={href} className="admin-nav-item">
       <span className="admin-nav-icon">{icon}</span>
@@ -36,3 +38,5 @@ function AdminLink({ href, icon, children }: { href: string; icon: string; child
     </Link>
   )
 }
+
+

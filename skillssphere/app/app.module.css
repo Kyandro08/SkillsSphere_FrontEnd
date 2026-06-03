@@ -1,498 +1,1114 @@
-/* ===== Layout ===== */
+/* ===== App pages ===== */
+
 .page {
   margin: 0 auto;
   max-width: 56rem;
-  padding: 2rem 1.5rem;
+  padding: 40px 28px;
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #18181b;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1.5px;
+  color: #fff;
+  margin: 0;
 }
 
 .subtitle {
-  margin-top: 0.25rem;
-  color: #71717a;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.9rem;
 }
 
-/* ===== Landing page ===== */
-.landing {
-  display: flex;
-  min-height: 80vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.5rem;
-  text-align: center;
-}
-
-.landingTitle {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #18181b;
-}
-
-.landingText {
-  margin-top: 1rem;
-  max-width: 28rem;
-  color: #71717a;
-}
-
-.landingBtns {
-  margin-top: 2rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.btnPrimary {
-  border-radius: 0.5rem;
-  background: #4f46e5;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+.sectionTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
   color: #fff;
-  text-decoration: none;
 }
 
-.btnPrimary:hover {
-  background: #4338ca;
-}
-
-.btnSecondary {
-  border-radius: 0.5rem;
-  border: 1px solid #d4d4d8;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #3f3f46;
-  text-decoration: none;
-}
-
-.btnSecondary:hover {
-  background: #fafafa;
-}
-
-/* ===== Auth forms ===== */
-.authWrap {
-  display: flex;
-  min-height: 80vh;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.5rem;
-}
-
-.authCard {
-  width: 100%;
-  max-width: 24rem;
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 1.5rem;
-}
-
-.authTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #18181b;
-}
-
-.authError {
-  margin-top: 0.75rem;
-  font-size: 0.875rem;
-  color: #dc2626;
-}
-
-.authFields {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.fieldLabel {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #3f3f46;
-}
-
-.fieldInput {
-  margin-top: 0.25rem;
-  display: block;
-  width: 100%;
-  border-radius: 0.5rem;
-  border: 1px solid #d4d4d8;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-}
-
-.fieldInput:focus {
-  border-color: #4f46e5;
-  outline: none;
-}
-
-.authBtn {
-  margin-top: 1.5rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  background: #4f46e5;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.authBtn:hover {
-  background: #4338ca;
-}
-
-.authFooter {
-  margin-top: 1rem;
+.emptyState {
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 32px;
   text-align: center;
-  font-size: 0.875rem;
-  color: #71717a;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.authLink {
-  color: #4f46e5;
-  text-decoration: underline;
-}
-
-/* ===== Feed / Dashboard ===== */
-.feed {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.feedCard {
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 1rem;
-}
-
-.feedHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.feedAvatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
-  background: #e4e4e7;
-}
-
-.feedName {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #18181b;
-}
-
-.feedTime {
-  font-size: 0.75rem;
-  color: #71717a;
-}
-
-.feedBody {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: #52525b;
-}
-
-/* ===== Netwerk / Search ===== */
-.searchInput {
-  margin-top: 1.5rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  border: 1px solid #d4d4d8;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-.searchInput:focus {
-  border-color: #4f46e5;
-  outline: none;
-}
-
-.userGrid {
-  margin-top: 1.5rem;
-  display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .userGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.userCard {
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.userInfo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.userAvatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
-  background: #e4e4e7;
-}
-
-.userName {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #18181b;
-}
-
-.userMeta {
-  font-size: 0.75rem;
-  color: #71717a;
-}
-
+/* ===== Shared ===== */
 .connectBtn {
-  border-radius: 0.5rem;
-  background: #4f46e5;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.75rem;
+  border-radius: 8px;
+  background: rgba(180, 77, 255, 0.1);
+  color: #b44dff;
+  padding: 8px 14px;
+  font-size: 0.78rem;
   font-weight: 500;
-  color: #fff;
-  border: none;
+  border: 1px solid rgba(180, 77, 255, 0.15);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
 
 .connectBtn:hover {
-  background: #4338ca;
+  background: rgba(180, 77, 255, 0.2);
 }
 
-/* ===== Leaderboard ===== */
-.rankList {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.rankRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 0.75rem 1rem;
-}
-
-.rankLeft {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.rankNum {
-  width: 2rem;
-  text-align: center;
-  font-size: 1.125rem;
-  font-weight: 700;
-}
-
-.rankNumTop {
-  color: #4f46e5;
-}
-
-.rankNumRest {
-  color: #a1a1aa;
-}
-
-.rankUser {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.rankAvatar {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  background: #e4e4e7;
-}
-
-.rankName {
-  font-size: 0.875rem;
+.declineBtn {
+  border-radius: 8px;
+  background: rgba(244, 67, 54, 0.1);
+  color: #ef9a9a;
+  padding: 8px 14px;
+  font-size: 0.78rem;
   font-weight: 500;
-  color: #18181b;
+  border: 1px solid rgba(244, 67, 54, 0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
 
-.rankPoints {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #3f3f46;
+.declineBtn:hover {
+  background: rgba(244, 67, 54, 0.2);
 }
 
-/* ===== Notificaties ===== */
-.notifList {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.searchInput {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #fff;
+  box-sizing: border-box;
 }
 
-.notifRow {
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.searchInput:focus {
+  outline: none;
+  border-color: #b44dff;
 }
 
-.notifRowUnread {
-  border-color: #c7d2fe;
-  background: #eef2ff;
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.25);
 }
 
-.notifLeft {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.notifDot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-}
-
-.notifDotRead {
-  background: transparent;
-}
-
-.notifDotUnread {
-  background: #4f46e5;
-}
-
-.notifMsg {
-  font-size: 0.875rem;
-  color: #3f3f46;
-}
-
-.notifTime {
-  font-size: 0.75rem;
-  color: #a1a1aa;
-}
-
-/* ===== Profile ===== */
+/* ===== Profile (shared with quiz) ===== */
 .profileCard {
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 28px 24px;
 }
 
 .profileTop {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .profileAvatar {
   width: 4rem;
   height: 4rem;
   border-radius: 9999px;
-  background: #eef2ff;
+  background: rgba(180, 77, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #4f46e5;
+  color: #b44dff;
+  flex-shrink: 0;
 }
 
 .profileName {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #18181b;
+  color: #fff;
 }
 
 .profileRole {
-  font-size: 0.875rem;
-  color: #71717a;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 2px;
 }
 
 .profilePoints {
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  color: #a1a1aa;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: #b44dff;
 }
 
 .section {
-  margin-top: 1.5rem;
+  margin-top: 28px;
 }
 
-.sectionTitle {
-  font-size: 1.125rem;
+.feed {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedCard {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 18px 20px;
+}
+
+.feedHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feedAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(180, 77, 255, 0.1);
+}
+
+.feedName {
+  font-size: 0.88rem;
   font-weight: 600;
-  color: #18181b;
+  color: #fff;
 }
 
-.emptyState {
-  margin-top: 0.75rem;
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 0.875rem;
-  color: #a1a1aa;
+.feedTime {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 1px;
 }
 
-/* ===== Admin ===== */
-.adminGrid {
-  margin-top: 2rem;
+/* ===== 1. Dashboard — Bento grid ===== */
+.dashGreeting {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dashName {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 1;
+  margin: 0 0 28px;
+}
+
+.bento {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
-@media (min-width: 640px) {
-  .adminGrid {
-    grid-template-columns: repeat(2, 1fr);
+.bentoTile {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 22px 20px;
+}
+
+.bentoTileWide {
+  grid-column: 1 / -1;
+}
+
+.bentoTall {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bentoLabel {
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  margin-bottom: 6px;
+}
+
+.bentoValue {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  color: #b44dff;
+  line-height: 1;
+}
+
+.bentoSub {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 2px;
+}
+
+.bentoIcon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+/* EXP bar */
+.expBar {
+  margin-top: 16px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.expBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #b44dff, #e040fb);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.expLabel {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Skill shelf ===== */
+.shelf {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(180,77,255,0.2) transparent;
+}
+
+.shelfCard {
+  flex-shrink: 0;
+  width: 160px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 18px 16px;
+}
+
+.shelfName {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.shelfLevel {
+  font-size: 0.72rem;
+  color: #b44dff;
+  margin-top: 4px;
+}
+
+.shelfPts {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+  .dashName {
+    font-size: 2.2rem;
   }
 }
 
-.adminCard {
-  border-radius: 0.5rem;
-  border: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 1.5rem;
+/* ===== 2. Network — Adresboek ===== */
+.networkSearch {
+  margin: 24px 0 20px;
 }
 
-.adminCardTitle {
-  font-size: 1.125rem;
+.netLetter {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.15);
+  padding: 16px 0 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  margin: 0;
+}
+
+.netList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.netItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.netItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.netLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.netInitial {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 9999px;
+  background: rgba(180, 77, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #18181b;
+  color: #b44dff;
+  flex-shrink: 0;
 }
 
-.adminCardText {
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  color: #71717a;
+.netName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
 }
+
+.netBio {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 1px;
+}
+
+.friendBadge {
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badgeFriends {
+  background: rgba(118, 185, 0, 0.1);
+  color: #76b900;
+  border: 1px solid rgba(118, 185, 0, 0.15);
+}
+
+.badgePending {
+  background: rgba(180, 77, 255, 0.1);
+  color: #b44dff;
+  border: 1px solid rgba(180, 77, 255, 0.15);
+}
+
+.badgeIncoming {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.15);
+}
+
+/* Friends section header */
+.friendsHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 16px;
+}
+
+.friendsCount {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.friendsRow {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.friendChip {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 6px 14px 6px 6px;
+}
+
+.friendChipInit {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  background: rgba(180, 77, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #b44dff;
+  flex-shrink: 0;
+}
+
+.friendChipName {
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+/* ===== 3. Leaderboard — Podium ===== */
+.podium {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  align-items: end;
+  gap: 12px;
+  margin: 32px 0;
+  text-align: center;
+}
+
+.podiumCard {
+  border-radius: 16px;
+  padding: 24px 16px 20px;
+  position: relative;
+}
+
+.podiumCard1 {
+  background: linear-gradient(180deg, rgba(255,215,0,0.08) 0%, rgba(255,215,0,0.02) 100%);
+  border: 1px solid rgba(255,215,0,0.15);
+  padding-bottom: 32px;
+}
+
+.podiumCard2 {
+  background: linear-gradient(180deg, rgba(192,192,192,0.06) 0%, rgba(192,192,192,0.02) 100%);
+  border: 1px solid rgba(192,192,192,0.12);
+}
+
+.podiumCard3 {
+  background: linear-gradient(180deg, rgba(205,127,50,0.06) 0%, rgba(205,127,50,0.02) 100%);
+  border: 1px solid rgba(205,127,50,0.12);
+}
+
+.podiumMedal {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.podiumMedal1 { color: #ffd700; }
+.podiumMedal2 { color: #c0c0c0; }
+.podiumMedal3 { color: #cd7f32; }
+
+.podiumAvatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 999px;
+  background: rgba(180, 77, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #b44dff;
+  margin: 0 auto 8px;
+}
+
+.podiumName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.podiumPts {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 2px;
+}
+
+.rankList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rankRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.rankRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rankLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rankNum {
+  width: 24px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.rankAvatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(180, 77, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #b44dff;
+  flex-shrink: 0;
+}
+
+.rankName {
+  font-size: 0.88rem;
+  color: #fff;
+}
+
+.rankPts {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 500;
+}
+
+.youRow {
+  background: rgba(180, 77, 255, 0.04);
+  border: 1px solid rgba(180, 77, 255, 0.1);
+  border-radius: 10px;
+}
+
+.youTag {
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #b44dff;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .podium {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== 4. Quiz — Focus mode ===== */
+.quizWrap {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.quizProgress {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.quizProgressFill {
+  height: 100%;
+  background: #b44dff;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.quizMeta {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.quizSkill {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  color: #fff;
+}
+
+.quizCounter {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-top: 4px;
+}
+
+.quizCard {
+  text-align: center;
+  padding: 32px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 24px;
+}
+
+.quizDifficulty {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 16px;
+}
+
+.quizQuestion {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0;
+}
+
+.quizOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quizOption {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 20px;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.quizOption:hover:not(:disabled) {
+  background: rgba(180, 77, 255, 0.06);
+  border-color: rgba(180, 77, 255, 0.2);
+}
+
+.quizOptionCorrect {
+  background: rgba(118, 185, 0, 0.1) !important;
+  border-color: #76b900 !important;
+  color: #76b900 !important;
+}
+
+.quizOptionWrong {
+  background: rgba(244, 67, 54, 0.1) !important;
+  border-color: #f44336 !important;
+  color: #f44336 !important;
+}
+
+.quizFeedback {
+  text-align: center;
+  margin-top: 28px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quizFeedbackIcon {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.quizIconCorrect { color: #76b900; }
+.quizIconWrong { color: #f44336; }
+
+.quizOptIcon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 0.72rem;
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+.quizOptionCorrect .quizOptIcon {
+  background: rgba(118, 185, 0, 0.15);
+  color: #76b900;
+}
+
+.quizOptionWrong .quizOptIcon {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+}
+
+.skillIconImg {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.skillIconFallback {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(180, 77, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #b44dff;
+}
+
+.quizFeedbackText {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.quizFeedbackCorrect {
+  color: #76b900;
+}
+
+.quizFeedbackWrong {
+  color: #f44336;
+}
+
+.quizNextBtn {
+  border-radius: 10px;
+  background: #b44dff;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+
+.quizNextBtn:hover {
+  opacity: 0.9;
+}
+
+/* Tier badge */
+.tierBadge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: rgba(180,77,255,0.1);
+  color: #b44dff;
+  border: 1px solid rgba(180,77,255,0.2);
+  margin-bottom: 24px;
+}
+
+/* Tier transition */
+.tierCompleteCard {
+  text-align: center;
+  padding: 48px 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(180,77,255,0.15);
+  background: rgba(180,77,255,0.03);
+}
+
+.tierCompleteIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: rgba(118,185,0,0.1);
+  border: 2px solid #76b900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #76b900;
+  font-size: 1.2rem;
+}
+
+.tierCompleteTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1.5px;
+  margin: 0 0 4px;
+}
+
+.tierCompletePoints {
+  font-size: 0.9rem;
+  color: #76b900;
+  margin-bottom: 16px;
+}
+
+.tierCompleteDesc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.tierBadgeAll {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(180,77,255,0.1);
+  color: #b44dff;
+  border: 1px solid rgba(180,77,255,0.2);
+}
+
+/* Scorecard */
+.scorecard {
+  text-align: center;
+  padding: 48px 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.scoreBig {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  letter-spacing: 2px;
+  color: #b44dff;
+  line-height: 1;
+}
+
+.scoreLabel {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scoreSkillName {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+}
+
+.scoreBackBtn {
+  margin-top: 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.scoreBackBtn:hover {
+  border-color: #b44dff;
+  color: #b44dff;
+}
+
+/* Skill picker on quiz */
+.skillGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  margin-top: 28px;
+}
+
+.skillCard {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.skillCard:hover {
+  border-color: #b44dff;
+  background: rgba(180, 77, 255, 0.04);
+}
+
+.skillCardIcon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.skillCardName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.skillCardCat {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 2px;
+}
+
+/* ===== 5. Notifications — Timeline ===== */
+.timeline {
+  margin-top: 28px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.timelineGroup {
+  margin-bottom: 24px;
+}
+
+.timelineLabel {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 12px;
+  padding-left: 32px;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 16px 10px 0;
+  position: relative;
+}
+
+.timelineDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(180, 77, 255, 0.1);
+  border: 2px solid rgba(180, 77, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineDotRead {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.timelineBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.timelineMsg {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.timelineMsg strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.timelineTime {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 2px;
+}
+
+.timelineActions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.timelineAction {
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.timelineAccept {
+  background: rgba(118, 185, 0, 0.12);
+  color: #76b900;
+}
+
+.timelineAccept:hover {
+  background: rgba(118, 185, 0, 0.2);
+}
+
+.timelineDecline {
+  background: rgba(244, 67, 54, 0.1);
+  color: #ef9a9a;
+}
+
+.timelineDecline:hover {
+  background: rgba(244, 67, 54, 0.18);
+}
+
+/* ===== Old compat (keep for profile) ===== */
+.userGrid { display: grid; gap: 12px; }
+@media (min-width: 640px) { .userGrid { grid-template-columns: repeat(2, 1fr); } }
+.userCard {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userInfo { display: flex; align-items: center; gap: 12px; }
+.userAvatar {
+  width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+  background: rgba(180, 77, 255, 0.1); flex-shrink: 0;
+}
+.userName { font-size: 0.88rem; font-weight: 600; color: #fff; }
+.userMeta { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+.notifList { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.notifRow {
+  border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02); padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.notifRowUnread { border-color: rgba(180,77,255,0.2); background: rgba(180,77,255,0.04); }
+.notifLeft { display: flex; align-items: center; gap: 12px; }
+.notifDot { width: 8px; height: 8px; border-radius: 9999px; flex-shrink: 0; }
+.notifDotUnread { background: #b44dff; }
+.notifMsg { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.notifTime { font-size: 0.75rem; color: rgba(255,255,255,0.3); white-space: nowrap; }
+.rankNumTop { color: #b44dff; }
+.rankNumRest { color: rgba(255,255,255,0.25); }

@@ -28,18 +28,20 @@ export default async function AdminLevelsPage() {
           <div className="admin-table-wrap">
             <table className="admin-table">
               <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Niveau</th>
-                  <th>Beschrijving</th>
-                  <th>Status</th>
-                </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Niveau</th>
+                    <th>Min. punten</th>
+                    <th>Beschrijving</th>
+                    <th>Status</th>
+                  </tr>
               </thead>
               <tbody>
                 {levels.map((l: any) => (
                   <tr key={l.level_id}>
                     <td>{l.level_id}</td>
                     <td>{l.level_name}</td>
+                    <td>{l.min_points ?? '-'}</td>
                     <td>{l.description || '-'}</td>
                     <td>
                       <span className={`admin-badge ${l.status === 1 ? 'admin-badge-active' : 'admin-badge-inactive'}`}>

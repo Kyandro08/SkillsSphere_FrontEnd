@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
+import { hashPassword } from '@/lib/auth'
 import { useRouter } from 'next/navigation'
 
 export default function AddUserForm() {
@@ -24,12 +25,15 @@ export default function AddUserForm() {
       return
     }
 
+    const hashed = await hashPassword(password)
+
     const { error: insertError } = await supabase.from('tb_users').insert({
       username,
       email,
-      password,
+      password: hashed,
       about_me: aboutMe,
       status,
+      last_modified: new Date().toISOString(),
     })
 
     if (insertError) {

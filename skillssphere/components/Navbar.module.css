@@ -2,16 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e4e4e7;
-  background: #fff;
-  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #0a0a0f;
+  padding: 12px 28px;
 }
 
 .logo {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #4f46e5;
+  color: #fff;
   text-decoration: none;
+  letter-spacing: 0.3px;
 }
 
 .left {
@@ -24,19 +25,19 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: #71717a;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .link {
   text-decoration: none;
   color: inherit;
-  transition: color 0.15s;
+  transition: color 0.2s;
 }
 
 .link:hover {
-  color: #4f46e5;
+  color: #b44dff;
 }
 
 .right {
@@ -49,26 +50,43 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: #71717a;
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.2s;
 }
 
 .profileLink:hover {
-  color: #4f46e5;
+  color: #b44dff;
 }
 
 .avatar {
   width: 2rem;
   height: 2rem;
   border-radius: 9999px;
-  background: #eef2ff;
+  background: rgba(180, 77, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4f46e5;
+  color: #b44dff;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
+}
+
+.logoutBtn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.logoutBtn:hover {
+  border-color: rgba(180, 77, 255, 0.3);
+  color: #b44dff;
 }

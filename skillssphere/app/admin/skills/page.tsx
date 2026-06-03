@@ -28,13 +28,14 @@ export default async function AdminSkillsPage() {
           <div className="admin-table-wrap">
             <table className="admin-table">
               <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Skill</th>
-                  <th>Categorie</th>
-                  <th>Beschrijving</th>
-                  <th>Status</th>
-                </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Skill</th>
+                    <th>Categorie</th>
+                    <th>Icoon</th>
+                    <th>Beschrijving</th>
+                    <th>Status</th>
+                  </tr>
               </thead>
               <tbody>
                 {skills.map((s: any) => (
@@ -42,6 +43,7 @@ export default async function AdminSkillsPage() {
                     <td>{s.skill_id}</td>
                     <td>{s.skill_name}</td>
                     <td>{s.category || '-'}</td>
+                    <td>{s.logo ? <img src={s.logo} alt="" style={{ width: 24, height: 24, objectFit: 'contain', borderRadius: 4 }} /> : '-'}</td>
                     <td>{s.description || '-'}</td>
                     <td>
                       <span className={`admin-badge ${s.status === 1 ? 'admin-badge-active' : 'admin-badge-inactive'}`}>

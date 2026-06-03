@@ -1,41 +1,28 @@
+import { cookies } from 'next/headers'
 import { supabase } from '@/lib/supabase'
+import BioEditor from '@/components/BioEditor'
 import styles from '@/app/app.module.css'
 
 export default async function ProfilePage() {
-  const { data: { session } } = await supabase.auth.getSession()
+  const sessionCookie = (await cookies()).get('ss_session')?.value
+  const session = sessionCookie ? JSON.parse(sessionCookie) : null
+
   let user: any = null
   let skills: any[] = []
 
-  if (session?.user) {
+  if (session) {
     const { data: u } = await supabase
       .from('tb_users')
       .select('*')
-      .eq('user_id', session.user.id)
+      .eq('user_id', session.user_id)
       .single()
     user = u
 
     const { data: s } = await supabase
       .from('tb_user_skills')
       .select('userskill_id, points_earned, status, tb_skills(skill_name), tb_levels(level_name)')
-      .eq('user_id', session.user.id)
+      .eq('user_id', session.user_id)
     skills = s || []
-  }
-
-  if (!user) {
-    const { data: first } = await supabase
-      .from('tb_users')
-      .select('*')
-      .limit(1)
-      .single()
-    user = first
-
-    if (user) {
-      const { data: s } = await supabase
-        .from('tb_user_skills')
-        .select('userskill_id, points_earned, status, tb_skills(skill_name), tb_levels(level_name)')
-        .eq('user_id', user.user_id)
-      skills = s || []
-    }
   }
 
   if (!user) {
@@ -55,7 +42,7 @@ export default async function ProfilePage() {
           <div className={styles.profileAvatar}>{user.username?.[0]?.toUpperCase() || '?'}</div>
           <div>
             <h1 className={styles.profileName}>{user.username || 'Onbekend'}</h1>
-            <p className={styles.profileRole}>{user.about_me || 'Geen beschrijving'}</p>
+            <p className={styles.profileRole}><BioEditor bio={user.about_me || ''} userId={user.user_id} /></p>
             <p className={styles.profilePoints}>Totaal punten: {totalPoints}</p>
           </div>
         </div>
@@ -71,8 +58,8 @@ export default async function ProfilePage() {
             <div key={s.userskill_id} className={styles.feedCard}>
               <div className={styles.feedHeader}>
                 <div>
-                  <p className={styles.feedName}>{(s as any).tb_skills?.skill_name || 'Onbekende skill'}</p>
-                  <p className={styles.feedTime}>{(s as any).tb_levels?.level_name || 'Onbekend niveau'} • {s.points_earned} punten</p>
+                  <p className={styles.feedName}>{s.tb_skills?.skill_name || 'Onbekende skill'}</p>
+                  <p className={styles.feedTime}>{s.tb_levels?.level_name || 'Onbekend niveau'} • {s.points_earned} punten</p>
                 </div>
               </div>
             </div>

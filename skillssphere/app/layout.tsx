@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SkillSphere Network",
   description: "Platform voor het registreren, valideren en vergelijken van vaardigheden",
+  icons: {
+    icon: [{ url: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90" fill="%23b44dff">✦</text></svg>', type: 'image/svg+xml' }],
+  },
 };
 
 export default function RootLayout({
@@ -26,8 +29,9 @@ export default function RootLayout({
     <html
       lang="nl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-zinc-50">{children}</body>
+      <body className="min-h-full flex flex-col" style={{ background: '#07070d', color: '#fff' }} suppressHydrationWarning>{children}</body>
     </html>
   );
 }

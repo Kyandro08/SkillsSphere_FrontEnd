@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import { UsersIcon, SkillsIcon, LevelsIcon, QuestionsIcon } from './icons'
 
 export default async function AdminDashboard() {
   const { count: userCount } = await supabase.from('tb_users').select('*', { count: 'exact', head: true })
@@ -9,7 +10,7 @@ export default async function AdminDashboard() {
 
   return (
     <>
-      <Link href="/dashboard" className="admin-back">← Terug naar app</Link>
+      <Link href="/" className="admin-back">← Terug naar app</Link>
 
       <div className="admin-page-header">
         <h1>Dashboard</h1>
@@ -39,22 +40,28 @@ export default async function AdminDashboard() {
       <div className="admin-section-title">Beheer</div>
       <div className="admin-cards">
         <Link href="/admin/users" className="admin-card">
-          <div className="admin-card-icon">👥</div>
+          <div className="admin-card-icon admin-card-iconText"><UsersIcon /></div>
           <div className="admin-card-title">Gebruikers</div>
           <div className="admin-card-desc">Bekijk en beheer alle gebruikersaccounts.</div>
-          <div className="admin-card-action">Beheren →</div>
+          <div className="admin-card-action">Beheren</div>
         </Link>
         <Link href="/admin/skills" className="admin-card">
-          <div className="admin-card-icon">🎯</div>
+          <div className="admin-card-icon admin-card-iconText"><SkillsIcon /></div>
           <div className="admin-card-title">Skills</div>
-          <div className="admin-card-desc">Voeg skills toe en beheer categorieën.</div>
-          <div className="admin-card-action">Beheren →</div>
+          <div className="admin-card-desc">Voeg skills toe en beheer categorieen.</div>
+          <div className="admin-card-action">Beheren</div>
         </Link>
         <Link href="/admin/levels" className="admin-card">
-          <div className="admin-card-icon">📊</div>
+          <div className="admin-card-icon admin-card-iconText"><LevelsIcon /></div>
           <div className="admin-card-title">Niveaus</div>
           <div className="admin-card-desc">Beheer de verschillende niveaus.</div>
-          <div className="admin-card-action">Beheren →</div>
+          <div className="admin-card-action">Beheren</div>
+        </Link>
+        <Link href="/admin/questions" className="admin-card">
+          <div className="admin-card-icon admin-card-iconText"><QuestionsIcon /></div>
+          <div className="admin-card-title">Vragen</div>
+          <div className="admin-card-desc">Voeg vragen en antwoorden toe per skill.</div>
+          <div className="admin-card-action">Beheren</div>
         </Link>
       </div>
     </>

@@ -8,6 +8,7 @@ export default function AddSkillForm() {
   const [skillName, setSkillName] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
+  const [iconUrl, setIconUrl] = useState('')
   const [status, setStatus] = useState(1)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
@@ -27,7 +28,9 @@ export default function AddSkillForm() {
       skill_name: skillName,
       category,
       description,
+      logo: iconUrl || null,
       status,
+      last_modified: new Date().toISOString(),
     })
 
     if (insertError) {
@@ -37,6 +40,7 @@ export default function AddSkillForm() {
       setSkillName('')
       setCategory('')
       setDescription('')
+      setIconUrl('')
       setStatus(1)
       router.refresh()
     }
@@ -67,6 +71,11 @@ export default function AddSkillForm() {
         </div>
 
         <div className="admin-field">
+          <label>Logo URL (optioneel)</label>
+          <input type="url" value={iconUrl} onChange={(e) => setIconUrl(e.target.value)} placeholder="https://example.com/icon.png" />
+        </div>
+
+        <div className="admin-field">
           <label>Status</label>
           <select value={status} onChange={(e) => setStatus(Number(e.target.value))}>
             <option value={1}>Actief</option>
@@ -74,7 +83,7 @@ export default function AddSkillForm() {
           </select>
         </div>
 
-        <button type="submit" className="admin-btn-primary">Skill toevoegen →</button>
+        <button type="submit" className="admin-btn-primary">Skill toevoegen</button>
       </form>
     </div>
   )
