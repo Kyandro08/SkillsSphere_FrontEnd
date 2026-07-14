@@ -1,26 +1,56 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import styles from './Navbar.module.css'
 
 export default function Navbar() {
+  const [user, setUser] = useState<{ username: string } | null>(null)
+  const isAdmin = user?.username === 'admin'
+  const router = useRouter()
+
+  useEffect(() => {
+    const raw = localStorage.getItem('ss_user')
+    if (raw) {
+      try { setUser(JSON.parse(raw)) } catch { /* ignore */ }
+    }
+  }, [])
+
+  function handleLogout() {
+    localStorage.removeItem('ss_user')
+    document.cookie = 'ss_session=; path=/; max-age=0'
+    setUser(null)
+    router.push('/')
+  }
+
+  const initial = user?.username?.[0]?.toUpperCase() || '?'
+
   return (
-    <nav className="flex items-center justify-between border-b border-zinc-200 bg-white px-6 py-3">
-      <div className="flex items-center gap-8">
-        <Link href="/" className="text-xl font-bold text-indigo-600">
-          SkillSphere
-        </Link>
-        <div className="flex items-center gap-6 text-sm font-medium text-zinc-600">
-          <Link href="/" className="hover:text-indigo-600 transition-colors">Dashboard</Link>
-          <Link href="/network" className="hover:text-indigo-600 transition-colors">Netwerk</Link>
-          <Link href="/leaderboard" className="hover:text-indigo-600 transition-colors">Leaderboard</Link>
-          <Link href="/notifications" className="hover:text-indigo-600 transition-colors">Notificaties</Link>
+    <nav className={styles.nav}>
+      <div className={styles.left}>
+        <Link href="/" className={styles.logo}>SkillSphere</Link>
+        <div className={styles.links}>
+          <Link href="/dashboard" className={styles.link}>Dashboard</Link>
+          <Link href="/network" className={styles.link}>Netwerk</Link>
+          <Link href="/leaderboard" className={styles.link}>Leaderboard</Link>
+          <Link href="/quiz" className={styles.link}>Skills testen</Link>
+          <Link href="/notifications" className={styles.link}>Notificaties</Link>
+          {isAdmin && <Link href="/admin" className={styles.link}>Admin</Link>}
         </div>
       </div>
-      <div className="flex items-center gap-4">
-        <Link href="/profile" className="flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-indigo-600 transition-colors">
-          <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold text-sm">
-            J
-          </div>
-          Profiel
-        </Link>
+      <div className={styles.right}>
+        {user ? (
+          <>
+            <Link href="/profile" className={styles.profileLink}>
+              <div className={styles.avatar}>{initial}</div>
+              {user.username}
+            </Link>
+            <button onClick={handleLogout} className={styles.logoutBtn}>Uitloggen</button>
+          </>
+        ) : (
+          <Link href="/login" className={styles.logoutBtn}>Inloggen</Link>
+        )}
       </div>
     </nav>
   )
