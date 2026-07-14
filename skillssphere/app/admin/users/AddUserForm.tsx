@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase } from '@/lib/supabase'
-import { hashPassword } from '@/lib/auth'
 import { useRouter } from 'next/navigation'
 
 export default function AddUserForm() {
@@ -25,19 +23,16 @@ export default function AddUserForm() {
       return
     }
 
-    const hashed = await hashPassword(password)
-
-    const { error: insertError } = await supabase.from('tb_users').insert({
-      username,
-      email,
-      password: hashed,
-      about_me: aboutMe,
-      status,
-      last_modified: new Date().toISOString(),
+    const res = await fetch('/api/admin/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password, about_me: aboutMe, status }),
     })
 
-    if (insertError) {
-      setError(insertError.message)
+    const data = await res.json()
+
+    if (!res.ok) {
+      setError(data.error || 'Gebruiker toevoegen mislukt.')
     } else {
       setMessage(`Gebruiker "${username}" toegevoegd!`)
       setUsername('')
@@ -71,7 +66,7 @@ export default function AddUserForm() {
         <div className="admin-row">
           <div className="admin-field">
             <label>Wachtwoord *</label>
-            <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={8} />
           </div>
           <div className="admin-field">
             <label>Status</label>

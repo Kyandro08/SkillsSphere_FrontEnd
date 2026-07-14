@@ -13,33 +13,33 @@ export default function NetworkPage() {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    const raw = localStorage.getItem('ss_user')
-    if (!raw) return
-    const u = JSON.parse(raw)
-    setCurrentUser(u)
+    fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(d => {
+      if (!d?.user) return setLoading(false)
+      setCurrentUser(d.user)
 
-    async function load() {
-      const [usersRes, friendsRes] = await Promise.all([
-        supabase.from('tb_users').select('user_id, username, about_me'),
-        supabase.from('tb_friends').select('user_id, friend_id, status').or(`user_id.eq.${u.user_id},friend_id.eq.${u.user_id}`),
-      ])
-      if (usersRes.data) setUsers(usersRes.data.filter((x: any) => x.user_id !== u.user_id))
-      if (friendsRes.data) setFriendships(friendsRes.data)
+      async function load() {
+        const [usersRes, friendsRes] = await Promise.all([
+          supabase.from('tb_users').select('user_id, username, about_me'),
+          supabase.from('tb_friends').select('user_id, friend_id, status').or(`user_id.eq.${d.user.user_id},friend_id.eq.${d.user.user_id}`),
+        ])
+        if (usersRes.data) setUsers(usersRes.data.filter((x: any) => x.user_id !== d.user.user_id))
+        if (friendsRes.data) setFriendships(friendsRes.data)
 
-      const accepted = (friendsRes.data || []).filter((f: any) => f.status === 1)
-      const friendIds = accepted.map((f: any) =>
-        f.user_id === u.user_id ? f.friend_id : f.user_id
-      )
-      if (friendIds.length > 0) {
-        const { data: friendUsers } = await supabase
-          .from('tb_users')
-          .select('user_id, username')
-          .in('user_id', friendIds)
-        setFriends(friendUsers || [])
+        const accepted = (friendsRes.data || []).filter((f: any) => f.status === 1)
+        const friendIds = accepted.map((f: any) =>
+          f.user_id === d.user.user_id ? f.friend_id : f.user_id
+        )
+        if (friendIds.length > 0) {
+          const { data: friendUsers } = await supabase
+            .from('tb_users')
+            .select('user_id, username')
+            .in('user_id', friendIds)
+          setFriends(friendUsers || [])
+        }
+        setLoading(false)
       }
-      setLoading(false)
-    }
-    load()
+      load()
+    }).catch(() => setLoading(false))
   }, [])
 
   async function sendRequest(friendId: number) {

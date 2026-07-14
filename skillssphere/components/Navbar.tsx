@@ -5,21 +5,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import styles from './Navbar.module.css'
 
+type User = { user_id: number; username: string; is_admin: boolean }
+
 export default function Navbar() {
-  const [user, setUser] = useState<{ username: string } | null>(null)
-  const isAdmin = user?.username === 'admin'
+  const [user, setUser] = useState<User | null>(null)
   const router = useRouter()
 
   useEffect(() => {
-    const raw = localStorage.getItem('ss_user')
-    if (raw) {
-      try { setUser(JSON.parse(raw)) } catch { /* ignore */ }
-    }
+    fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(d => {
+      if (d?.user) setUser(d.user)
+    }).catch(() => {})
   }, [])
 
-  function handleLogout() {
-    localStorage.removeItem('ss_user')
-    document.cookie = 'ss_session=; path=/; max-age=0'
+  async function handleLogout() {
+    await fetch('/api/auth/logout', { method: 'POST' })
     setUser(null)
     router.push('/')
   }
@@ -36,7 +35,7 @@ export default function Navbar() {
           <Link href="/leaderboard" className={styles.link}>Leaderboard</Link>
           <Link href="/quiz" className={styles.link}>Skills testen</Link>
           <Link href="/notifications" className={styles.link}>Notificaties</Link>
-          {isAdmin && <Link href="/admin" className={styles.link}>Admin</Link>}
+          {user?.is_admin && <Link href="/admin" className={styles.link}>Admin</Link>}
         </div>
       </div>
       <div className={styles.right}>

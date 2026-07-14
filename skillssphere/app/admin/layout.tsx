@@ -1,10 +1,21 @@
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { verifySession, COOKIE_NAME } from '@/lib/auth'
 import './admin.css'
 import { DashboardIcon, UsersIcon, SkillsIcon, LevelsIcon, QuestionsIcon } from './icons'
 
 export const dynamic = 'force-dynamic'
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+  const token = cookieStore.get(COOKIE_NAME)?.value
+  const session = token ? await verifySession(token) : null
+
+  if (!session || !session.is_admin) {
+    redirect('/dashboard')
+  }
+
   return (
     <div className="admin-wrap">
       <aside className="admin-sidebar">
@@ -40,5 +51,3 @@ function AdminLink({ href, icon, children }: { href: string; icon: React.ReactNo
     </Link>
   )
 }
-
-

@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase } from '@/lib/supabase'
-import { hashPassword, setSession } from '@/lib/auth'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import styles from '../public.module.css'
@@ -22,27 +20,18 @@ export default function RegisterPage() {
     setBusy(true)
 
     try {
-      const hashed = await hashPassword(password)
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: name, email, password, bio }),
+      })
 
-      const { data: inserted, error: insertError } = await supabase
-        .from('tb_users')
-        .insert({
-          username: name,
-          email,
-          password: hashed,
-          about_me: bio,
-          status: 1,
-          last_modified: new Date().toISOString(),
-        })
-        .select('user_id, username, email')
-        .single()
+      const data = await res.json()
 
-      if (insertError) {
-        setError(insertError.message)
+      if (!res.ok) {
+        setError(data.error || 'Registreren is mislukt.')
         return
       }
-
-      setSession({ user_id: inserted.user_id, username: inserted.username, email: inserted.email })
 
       router.push('/dashboard')
     } catch {

@@ -40,17 +40,18 @@ export default function QuizPage() {
   const [levels, setLevels] = useState<any[]>([])
 
   useEffect(() => {
-    const raw = localStorage.getItem('ss_user')
-    if (!raw) return
-    setUser(JSON.parse(raw))
-    Promise.all([
-      supabase.from('tb_skills').select('*').eq('status', 1),
-      fetchLevels(),
-    ]).then(([{ data }, lvls]) => {
-      if (data) setSkills(data)
-      setLevels(lvls)
-      setLoading(false)
-    })
+    fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(d => {
+      if (!d?.user) return
+      setUser(d.user)
+      Promise.all([
+        supabase.from('tb_skills').select('*').eq('status', 1),
+        fetchLevels(),
+      ]).then(([{ data }, lvls]) => {
+        if (data) setSkills(data)
+        setLevels(lvls)
+        setLoading(false)
+      })
+    }).catch(() => setLoading(false))
   }, [])
 
   async function startQuiz(skill: any) {

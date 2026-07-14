@@ -1,11 +1,13 @@
 import { cookies } from 'next/headers'
 import { supabase } from '@/lib/supabase'
+import { verifySession, COOKIE_NAME } from '@/lib/auth'
 import { fetchLevels, determineLevel, getLevelProgress } from '@/lib/levels'
 import styles from '@/app/app.module.css'
 
 export default async function DashboardPage() {
-  const sessionCookie = (await cookies()).get('ss_session')?.value
-  const session = sessionCookie ? JSON.parse(sessionCookie) : null
+  const cookieStore = await cookies()
+  const token = cookieStore.get(COOKIE_NAME)?.value
+  const session = token ? await verifySession(token) : null
 
   let skills: any[] = []
   let totalPoints = 0

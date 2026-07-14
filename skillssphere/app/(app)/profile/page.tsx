@@ -1,11 +1,13 @@
 import { cookies } from 'next/headers'
 import { supabase } from '@/lib/supabase'
+import { verifySession, COOKIE_NAME } from '@/lib/auth'
 import BioEditor from '@/components/BioEditor'
 import styles from '@/app/app.module.css'
 
 export default async function ProfilePage() {
-  const sessionCookie = (await cookies()).get('ss_session')?.value
-  const session = sessionCookie ? JSON.parse(sessionCookie) : null
+  const cookieStore = await cookies()
+  const token = cookieStore.get(COOKIE_NAME)?.value
+  const session = token ? await verifySession(token) : null
 
   let user: any = null
   let skills: any[] = []

@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase } from '@/lib/supabase'
-import { hashPassword, setSession } from '@/lib/auth'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import styles from '../public.module.css'
@@ -20,30 +18,20 @@ export default function LoginPage() {
     setBusy(true)
 
     try {
-      const hashed = await hashPassword(password)
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
 
-      const { data: users, error: queryError } = await supabase
-        .from('tb_users')
-        .select('user_id, username, email')
-        .eq('email', email)
-        .eq('password', hashed)
-        .limit(1)
+      const data = await res.json()
 
-      if (queryError) {
-        setError(queryError.message)
+      if (!res.ok) {
+        setError(data.error || 'Inloggen is mislukt.')
         return
       }
 
-      if (!users || users.length === 0) {
-        setError('Ongeldig emailadres of wachtwoord.')
-        return
-      }
-
-      const u = users[0]
-      const userData = { user_id: u.user_id, username: u.username, email: u.email }
-      setSession(userData)
-
-      router.push(u.username === 'admin' ? '/admin' : '/dashboard')
+      router.push(data.redirect || '/dashboard')
     } catch {
       setError('Inloggen is mislukt. Probeer het opnieuw.')
     } finally {

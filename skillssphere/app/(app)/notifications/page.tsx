@@ -10,21 +10,21 @@ export default function NotificationsPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const raw = localStorage.getItem('ss_user')
-    if (!raw) return
-    const u = JSON.parse(raw)
-    setCurrentUser(u)
-    async function load() {
-      const { data } = await supabase
-        .from('tb_friends')
-        .select('friend_id, user_id, status, last_modified, tb_users!tb_friends_user_id_fkey(username)')
-        .eq('friend_id', u.user_id)
-        .eq('status', 0)
-        .order('last_modified', { ascending: false })
-      setRequests(data || [])
-      setLoading(false)
-    }
-    load()
+    fetch('/api/auth/me').then(r => r.ok ? r.json() : null).then(d => {
+      if (!d?.user) return setLoading(false)
+      setCurrentUser(d.user)
+      async function load() {
+        const { data } = await supabase
+          .from('tb_friends')
+          .select('friend_id, user_id, status, last_modified, tb_users!tb_friends_user_id_fkey(username)')
+          .eq('friend_id', d.user.user_id)
+          .eq('status', 0)
+          .order('last_modified', { ascending: false })
+        setRequests(data || [])
+        setLoading(false)
+      }
+      load()
+    }).catch(() => setLoading(false))
   }, [])
 
   async function respond(friendId: number, status: number) {
